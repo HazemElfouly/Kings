@@ -40,33 +40,4 @@ client.on('message', async msg => {
   msg.channel.send({file: { attachment:body.message, name: 'changemymind.png'}}).then(()=> { searchMessage.delete(); msg.channel.stopTyping(); });
 };
 });
-client.on("message", async message => {
-  if(message.author.bot) return;
-  if(message.channel.type === "dm") return;
-
-  let prefix = "البريفكس";
-  let messageArray = message.content.split (" ");
-  let cmd = messageArray[0];
-  let args = messageArray.slice(1);
-
-
-
-if(cmd === `${prefix}8ball`){
-
-
-if(!args[1]) return message.reply("Please ask a full question!");
-let replies = ["Yes", "No.", "I don't know.", "Ask again later plez."];
-
-  let result = Math.floor((Math.random() * replies.length));
-  let question = args.slice(1).join(" ");
-
-  let ballembed = new Discord.RichEmbed ()
-  .setAuthor(message.author.tag)
-  .setColor("#FF9900")
-  .addField("Question", question)
-  .addField("Answer", replies[result]);
-
-  message.channel.send(ballembed);
-}
-});
 client.login(process.env.BOT_TOKEN);
