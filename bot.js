@@ -41,7 +41,7 @@ client.on('message', async msg => {
 };
 });
   client.on('guildMemberAdd', member => {
-        let channel = member.guild.channels.find('name', 'اسم الروم الي بيرحب فيه');
+        let channel = member.guild.channels.find('welcome', 'اسم الروم الي بيرحب فيه');
         let memberavatar = member.user.avatarURL
           if (!channel) return;
         let embed = new Discord.RichEmbed()
