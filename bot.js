@@ -40,4 +40,21 @@ client.on('message', async msg => {
   msg.channel.send({file: { attachment:body.message, name: 'changemymind.png'}}).then(()=> { searchMessage.delete(); msg.channel.stopTyping(); });
 };
 });
+client.on("voiceStateUpdate", (old, new1) => {
+    var channel = "485810660454694912";
+    var role = "Kings"
+    لول(old,new1,channel,role);
+});
+
+function لول(o,n,channel,role){
+    if (!o.voiceChannel && n.voiceChannel) {
+        if (n.voiceChannelID == channel) {
+            n.addRole(n.guild.roles.find("name", role));
+        };
+    } else if (o.voiceChannel && !n.voiceChannel) {
+        if (o.voiceChannelID == channel) {
+            n.removeRole(n.guild.roles.find("name", role))
+        }
+    }
+}
 client.login(process.env.BOT_TOKEN);
